@@ -1,0 +1,45 @@
+<div class="container">
+    <div class="nav-container">
+        <div class="title">
+            <a routerLink="/">Tennis4U</a>
+        </div>
+        <div>
+            <nav>
+                <ul>
+                    <li><a routerLink="/clubs">Kluby</a></li>
+                    <li><a routerLink="/tournaments">Turnieje</a></li>
+                    <li *ngIf="authGurad.isLoggedIn()"><a routerLink="/worker">Panel klubu</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+    <div class="nav-container" *ngIf="!authGurad.isLoggedIn(); else isLoggedIn">
+        <ul>
+            <li><a routerLink="/login">Logowanie</a></li>
+            <li><a routerLink="/register">Rejestracja</a></li>
+        </ul>     
+    </div>
+    <ng-template #isLoggedIn>
+        
+            <div class="user-menu" mat-button [matMenuTriggerFor]="menu">
+                <img alt="Avatar" src="{{authGurad.getUserAvatar()}}">
+                <span>{{authGurad.getUserName()}}</span>
+                <mat-menu #menu="matMenu">
+                    <button mat-menu-item><a routerLink="/user/{{authGurad.getUserId()}}">Profil</a></button>
+                    <button mat-menu-item><a routerLink="/user/{{authGurad.getUserId()}}/matches">Mecze</a></button>
+                    <button mat-menu-item><a routerLink="/user/{{authGurad.getUserId()}}/reservations">Rezerwacje</a></button>
+                    <button mat-menu-item><a routerLink="/logout">Wyloguj</a></button>
+                </mat-menu>
+            </div>
+            
+            
+        
+        
+        
+
+    </ng-template>
+</div>
+
+
+    
+    
