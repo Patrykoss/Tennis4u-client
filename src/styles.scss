@@ -7,8 +7,53 @@ $text-color: #ffffff;
 
 body {
     padding: 0;
-    margin: 0;
     background-color: $light-green;
 }
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+h1 {
+    color: $text-color;
+    font-weight: bold;
+}
+
+hr {
+    color: $text-color;
+    font-weight: bold;
+}
+
+
+.btn-form {
+    cursor: pointer;
+    color: $text-color;
+    border-radius: 20px;
+    font-size: 20px;
+    padding: 5px 30px 5px 30px;
+    width: 150px;
+}
+
+.btn-info{
+    background-color: #29C7A1;
+    border-color: #29C7A1;
+}
+
+.btn-success {
+    background-color: #25CA49;
+    border-color: #25CA49;
+}
+
+.btn-cancel {
+    background-color: #FF3030;
+    border-color: #FF3030; 
+}
+
+.btn-return {
+    background-color: #DB940C;
+    border-color: #DB940C; 
+}
+
+button a {
+    color: #f6f6f6;
+    text-decoration: none;
+    cursor: pointer;
+}

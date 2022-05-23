@@ -1,0 +1,36 @@
+<div class="container">
+	<h1>Logowanie</h1>
+	<hr />
+
+	<form class="form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+		<mat-form-field class="example-full-width" appearance="fill">
+			<mat-label>Email</mat-label>
+			<input type="email" formControlName="email" matInput />
+			<mat-error
+				*ngIf="
+					loginForm.get('email')?.hasError('pattern') &&
+					!loginForm.get('email')?.hasError('required')
+				">
+				Błędny format emaila
+			</mat-error>
+			<mat-error *ngIf="loginForm.get('email')?.hasError('required')">
+				Email jest wymagany
+			</mat-error>
+		</mat-form-field>
+
+		<mat-form-field class="example-full-width" appearance="fill">
+			<mat-label>Hasło</mat-label>
+			<input type="password" formControlName="password" matInput />
+			<mat-error *ngIf="loginForm.get('password')?.hasError('required')">
+				Hasło jest wymagane
+			</mat-error>
+		</mat-form-field>
+
+		<div class="btn-container">
+			<button class="btn-form btn-info">
+				<a routerLink="/register"> Zarejestruj </a>
+			</button>
+			<button type="submit" class="btn-form btn-success">Zaloguj</button>
+		</div>
+	</form>
+</div>

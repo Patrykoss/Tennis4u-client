@@ -1,17 +1,21 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthGuardService } from 'src/app/core/services/auth-guard.service';
-import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-nav-bar',
-  templateUrl: './nav-bar.component.html',
-  styleUrls: ['./nav-bar.component.scss']
+	selector: 'app-nav-bar',
+	templateUrl: './nav-bar.component.html',
+	styleUrls: ['./nav-bar.component.scss'],
 })
 export class NavBarComponent implements OnInit {
+	constructor(public authGuard: AuthGuardService) {}
 
-  constructor(public authGurad: AuthGuardService) { }
+	ngOnInit(): void {}
 
-  ngOnInit(): void {
-  }
-
+	logout(): void {
+		localStorage.removeItem('accessToken');
+		localStorage.removeItem('refreshToken');
+		localStorage.removeItem('userName');
+		localStorage.removeItem('avatar');
+		localStorage.removeItem('idUser');
+	}
 }
