@@ -13,8 +13,7 @@ export class AuthService {
 
 	constructor(private readonly _http: HttpClient) {}
 
-	registerAccount(data: any): Observable<any> {
-		// HttpResponse<any>
+	registerAccount(data: any): Observable<any> {// HttpResponse<any>
 		const newAccount = {
 			firstName: data.firstName,
 			lastName: data.lastName,

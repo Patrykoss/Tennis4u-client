@@ -11,10 +11,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RegisterFormComponent } from './features/auth/register-form/register-form.component';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 import { LoginFormComponent } from './features/auth/login-form/login-form.component';
+import { HomeComponent } from './features/home/home.component';
+import { TennisClubsComponent } from './features/tennis-club/tennis-clubs/tennis-clubs.component';
 
 @NgModule({
-	declarations: [AppComponent, RegisterFormComponent, LoginFormComponent],
+	declarations: [AppComponent, RegisterFormComponent, LoginFormComponent, HomeComponent, TennisClubsComponent],
 	imports: [
 		BrowserModule,
 		AppRoutingModule,

@@ -1,0 +1,19 @@
+<div class="page-container">
+    <h1 style="font-weight: bold;">Kluby tenisowe</h1>
+    <hr class="title-hr" />
+    <div *ngIf="tennisClubs != undefined && tennisClubs.length > 0">
+        <a routerLink="/tennisClubs/{{tennisClub.idTennisClub}}" class="club-container"  *ngFor="let tennisClub of tennisClubs">
+            <img src="{{tennisClub.logo}}" class="img-logo">
+            <div class="club-info">
+                <h1>{{tennisClub.clubName}}</h1>
+                <hr />
+                <span style="margin-top: 30px; font-size: 30px;">{{tennisClub.city}} ul. {{tennisClub.street}}</span> 
+            </div>
+        </a> 
+    </div>
+    <div *ngIf="tennisClubs != undefined && tennisClubs.length == 0">
+        <h2>
+            Brak klubów tenisowych
+        </h2>
+    </div>
+</div>

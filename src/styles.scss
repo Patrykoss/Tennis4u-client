@@ -14,12 +14,22 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 h1 {
     color: $text-color;
+    font-size: 50px;
     font-weight: bold;
+}
+
+h2 {
+    color: $text-color;
+    font-size: 30px;
 }
 
 hr {
     color: $text-color;
     font-weight: bold;
+}
+
+span {
+    color: $text-color;
 }
 
 
@@ -56,4 +66,19 @@ button a {
     color: #f6f6f6;
     text-decoration: none;
     cursor: pointer;
+}
+
+.page-container {
+    background-color: $dark-green;
+    // display: flex;
+    // flex-direction: column;
+    // justify-content: flex-start;
+    // align-content: flex-start;
+    border-radius: 10px;
+    padding: 70px 20px 20px 100px;
+    margin-top: 20px;
+    min-width: 650px;
+    max-width: 1750px;
+    height: 80%;
+    margin: 20px auto;
 }
