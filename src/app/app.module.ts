@@ -15,9 +15,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginFormComponent } from './features/auth/login-form/login-form.component';
 import { HomeComponent } from './features/home/home.component';
 import { TennisClubsComponent } from './features/tennis-club/tennis-clubs/tennis-clubs.component';
+import { TournamentsComponent } from './features/tournament/tournaments/tournaments.component';
 
 @NgModule({
-	declarations: [AppComponent, RegisterFormComponent, LoginFormComponent, HomeComponent, TennisClubsComponent],
+	declarations: [AppComponent, RegisterFormComponent, LoginFormComponent, HomeComponent, TennisClubsComponent, TournamentsComponent],
 	imports: [
 		BrowserModule,
 		AppRoutingModule,

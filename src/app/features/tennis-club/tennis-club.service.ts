@@ -15,7 +15,7 @@ export class TennisClubService {
 
   getTennisClubs(): Observable<TennisClub[]> {
     return this._http.get<TennisClub[]>(this.tennisClubsUrl).pipe(
-      map((res: TennisClub[]) => res.map(d => this._tennisClubAdapter.adapt(d))
+      map((res: TennisClub[]) => res.map(obj => this._tennisClubAdapter.adapt(obj))
     ));
   }
 

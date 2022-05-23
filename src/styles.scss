@@ -3,11 +3,13 @@ $dark-green: #004614;
 $mid-green: #177130;
 $light-green: #E9FFF4;
 $text-color: #ffffff;
+$table-dark-green: #00381C;
 
 
 body {
     padding: 0;
     background-color: $light-green;
+    color: $text-color;
 }
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
@@ -62,18 +64,14 @@ span {
     border-color: #DB940C; 
 }
 
-button a {
-    color: #f6f6f6;
+a {
+    color: $text-color;
     text-decoration: none;
     cursor: pointer;
 }
 
 .page-container {
     background-color: $dark-green;
-    // display: flex;
-    // flex-direction: column;
-    // justify-content: flex-start;
-    // align-content: flex-start;
     border-radius: 10px;
     padding: 70px 20px 20px 100px;
     margin-top: 20px;
@@ -81,4 +79,11 @@ button a {
     max-width: 1750px;
     height: 80%;
     margin: 20px auto;
+}
+
+a .btn-action {
+    width: 30px;
+    height: 30px;
+    padding: 10px;
+    border-radius: 50%;
 }
