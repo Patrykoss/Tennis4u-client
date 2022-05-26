@@ -1,0 +1,41 @@
+<app-tennis-club-navigator></app-tennis-club-navigator>
+<div class="page-container-with-nav">
+    <h1 style="font-weight: bold;">Turnieje</h1>
+    <hr class="title-hr" />
+    <table *ngIf="tournaments != undefined && tournaments.length > 0">
+        <thead>
+            <tr>
+                <th>Data rozpoczęcia</th>
+                <th>Nazwa</th>
+                <th>Ranga</th>
+                <th>Zwycięzca</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let tournament of tournaments">
+                <td>{{dateParser.parseDate(tournament.startDate)}}</td>
+                <td>{{tournament.tournamentName}}</td>
+                <td>{{tournament.rank}}</td>
+                <td *ngIf="tournament.idWinner != undefined; else noWinner"><a routerLink="/user/{{tournament.idWinner}}" >{{tournament.winnerName}}</a></td>
+                <ng-template #noWinner><td><span>-</span></td></ng-template>
+                <td class="btns-action">
+                    <a routerLink="/tournaments/{{tournament.idTournament}}" class="btn-info btn-action">
+                        <img src="./../../../../assets/images/search.svg">
+                    </a>
+                    <a routerLink="/tournaments/{{tournament.idTournament}}/edit" class="btn-return btn-action">
+                        <img src="./../../../../assets/images/edit.png" class="img-action">
+                    </a>
+                    <a (click)="askBeforeDelete(tournament)" *ngIf="authGuard.isWorker() && authGuard.getClubId() == tournament.idTennisClub && isBeforeNow(tournament)" class="btn-cancel btn-action">
+                        <img src="./../../../../assets/images/delete.png" class="img-action">
+                    </a>
+                </td>  
+            </tr>
+        </tbody>
+    </table>
+    <div *ngIf="tournaments != undefined && tournaments.length == 0">
+        <h2>
+            Brak turniejów tenisowych
+        </h2>
+    </div>
+</div> 

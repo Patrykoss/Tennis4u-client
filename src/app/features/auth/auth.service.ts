@@ -25,7 +25,7 @@ export class AuthService {
 		};
 		return this._http
 			.post<any>(`${this.clientsUrl}/register`, newAccount, {
-				observe: 'response',
+observe: 'response',
 			})
 			.pipe(
 				catchError((error) => {

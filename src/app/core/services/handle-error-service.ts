@@ -19,15 +19,16 @@ export class HandleErrorService {
 				errorMesage = err.error;
 				break;
 			case 401:
-				if (err.url == 'http://localhost:4200/api/accounts/login')
-						errorMesage = 'invalidCredentials';
-				else {
-					if (err.error.expired) errorMesage = 'tokenExpired';
-					else errorMesage = 'httpErros.401';
-				}
+				errorMesage = err.error ?? "Nieupoważniony dostęp"
+				// if (err.url == 'http://localhost:4200/api/accounts/login')
+				// 		errorMesage = 'invalidCredentials';
+				// else {
+				// 	if (err.error.expired) errorMesage = 'tokenExpired';
+				// 	else errorMesage = 'httpErros.401';
+				// }
 				break;
 			case 403:
-				errorMesage = 'httpErros.403';
+				errorMesage = 'Nieupoważniony dostęp';
 					break;
 			case 404:
 				errorMesage = err.error;
@@ -52,6 +53,9 @@ export class HandleErrorService {
 			this._router.navigate(['login']);
 		}
 		if (err.status === 403) {
+			this._router.navigate(['']);
+		}
+		if (err.status === 404) {
 			this._router.navigate(['']);
 		}
 	}

@@ -1,0 +1,16 @@
+<div class="nav-container">
+    <div class ="container">
+        <div>
+            <img src="" class="img-logo">
+        </div>
+        <div class="nav-info">
+            <h1 style="font-weight:normal;">{{tennisClub?.clubName}}</h1>
+            <hr>
+            <div class="nav-btn-container">
+                <a routerLink="/tennisClubs/{{tennisClub?.idTennisClub}}"><button class="btn btn-nav bnt-pointer">O klubie</button></a>
+                <a routerLink="/tennisClubs/{{tennisClub?.idTennisClub}}/reservations"><button class="btn btn-nav bnt-pointer">Grafik</button></a>
+                <a routerLink="/tennisClubs/{{tennisClub?.idTennisClub}}/tournaments"><button class="btn btn-nav bnt-pointer">Turnieje</button></a>
+            </div>
+        </div>
+    </div>
+</div>

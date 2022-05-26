@@ -81,9 +81,26 @@ a {
     margin: 20px auto;
 }
 
-a .btn-action {
+.page-container-with-nav {
+    background-color: $dark-green;
+    border-radius: 10px;
+    padding: 70px 20px 20px 100px;
+    margin-top: 20px;
+    min-width: 650px;
+    max-width: 1750px;
+    height: 55%;
+    margin: 20px auto;
+    min-height: 450px;
+}
+
+.btn-action {
     width: 30px;
     height: 30px;
     padding: 10px;
     border-radius: 50%;
+}
+
+.img-action{
+    width: 30px;
+    height: 30px;
 }

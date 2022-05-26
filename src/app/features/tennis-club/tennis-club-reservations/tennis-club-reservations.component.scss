@@ -1,0 +1,52 @@
+@import  './../../../../styles.scss';
+
+hr {
+    margin: 0;
+}
+.title-hr{
+    width: 80%;
+    margin-bottom: 30px;
+}
+
+.single-box{
+    width: 100px;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.box-container{
+    display: flex;
+    flex-direction: row;
+    row-gap: 5px;
+    gap: 5px;
+}
+.schedule-container{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.box-header{
+    background-color: $mid-green;
+}
+
+.court-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 160px;
+}
+
+.form{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    margin-right: 120px;
+}
+
+.busy-box:disabled{
+    cursor: none; 
+}

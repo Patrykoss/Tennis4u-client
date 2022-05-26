@@ -8,17 +8,15 @@
                 <th>Nazwa</th>
                 <th>Ranga</th>
                 <th>Klub</th>
-                <th>Zwycięzca</th>
                 <th></th>
             </tr>
         </thead>
         <tbody>
             <tr *ngFor="let tournament of tournaments">
-                <td>{{tournament.startDate}}</td>
+                <td>{{dateParser.parseDate(tournament.startDate)}}</td>
                 <td>{{tournament.tournamentName}}</td>
                 <td>{{tournament.rank}}</td>
                 <td><a routerLink="/tennisClubs/{{tournament.idTennisClub}}">{{tournament.tennisClubName}}</a></td>
-                <td><a routerLink="/tennisClubs/{{tournament.idWinner}}">{{tournament.winnerName}}</a></td>
                 <td><a routerLink="/tournaments/{{tournament.idTournament}}">
                     <img src="./../../../../assets/images/search.svg" class="btn-action btn-info">
                 </a></td>  

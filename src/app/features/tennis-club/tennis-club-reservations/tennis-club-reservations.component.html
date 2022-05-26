@@ -1,0 +1,38 @@
+<app-tennis-club-navigator></app-tennis-club-navigator>
+<div class="page-container-with-nav" style="padding-bottom: 200px;">
+    <h1 style="font-weight: bold;">Grafik</h1>
+    <hr class="title-hr" />
+
+    <form class="form" [formGroup]="dateForm">
+        <mat-form-field appearance="fill">
+            <mat-label>Choose a date</mat-label>
+            <input matInput [matDatepicker]="picker" formControlName="dateOfReservation" (ngModelChange)="updateGraphic($event)"> 
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+    </form>
+
+    <div class="schedule-container">
+        <div class="box-container">
+            <div class="court-box">
+            </div>
+            <div class="single-box box-header" *ngFor="let hour of clubHours?.workHours">
+                {{hour.hour}}
+            </div>
+        </div>
+        <div *ngFor="let court of clubHours?.courts" class="box-container">
+            <div class="court-box box-header">
+                <span>Kort {{court.number}}</span>
+                <span>{{court.roof}} ({{court.surface}})</span>
+            </div>
+            <div *ngFor="let hour of clubHours?.workHours">
+                <a *ngIf="isAvailable(court.number, hour.hour); else notAvailable" routerLink="/reservations/tennisClub/{{court.idTennisClub}}/tennisCourt/{{court.idTennisCourt}}/date/{{getCurrentDate()}}/time/{{hour.hour}}">
+                    <div class="single-box btn-success"></div>
+                </a>
+                <ng-template #notAvailable >
+                    <div class="single-box btn-cancel"></div>
+                </ng-template>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,28 @@
+<app-tennis-club-navigator></app-tennis-club-navigator>
+<div class="page-container-with-nav" *ngIf="tennisClub !== undefined">
+    <h1>O klubie</h1>
+    <hr class="title-hr" />
+    <div class="info-container">
+        <div class="column-info">
+            <h2>Adres</h2>
+            <hr class="hr-info" />
+            <span><strong>{{tennisClub.clubName}}</strong></span>
+            <span>ul. {{tennisClub.street}}</span>
+            <span>{{tennisClub.postCode}} {{tennisClub.city}}</span>
+            <span><strong>Telefon:</strong> {{tennisClub.phoneNumbers}}</span>
+            <span *ngIf="tennisClub.email != undefined"><strong>Email:</strong> {{tennisClub.email}}</span>
+            <span *ngIf="tennisClub.website != undefined"><strong>Strona internetowa:</strong> {{tennisClub.website}}</span>
+        </div>
+        <div class="column-info">
+            <h2>Godziny otwarcia</h2>
+            <hr class="hr-info" />
+            <table *ngFor="let day of tennisClub.workDays">
+                <tr>
+                    <td class="name-day"><span><strong>{{day.dayName}}:</strong></span></td>
+                    <td><span>{{day.openHour.toString().slice(0, -3)}}-{{day.closeHour.toString().slice(0, -3)}}</span></td>
+                </tr>
+            </table>
+           
+        </div>
+    </div>
+</div>

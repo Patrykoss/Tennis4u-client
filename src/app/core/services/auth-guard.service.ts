@@ -22,6 +22,11 @@ export class AuthGuardService {
 		return Number(idUser);
 	}
 
+	getClubId(): number | null {
+		const idClub = localStorage.getItem('idClub');
+		return Number(idClub);
+	}
+
 	getUserAvatar(): string | null {
 		const avatar = localStorage.getItem('avatar');
 		return avatar;

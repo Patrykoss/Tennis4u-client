@@ -11,14 +11,23 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RegisterFormComponent } from './features/auth/register-form/register-form.component';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { DatePipe } from '@angular/common';
+import {MatSelectModule} from '@angular/material/select'
 
 import { LoginFormComponent } from './features/auth/login-form/login-form.component';
 import { HomeComponent } from './features/home/home.component';
 import { TennisClubsComponent } from './features/tennis-club/tennis-clubs/tennis-clubs.component';
 import { TournamentsComponent } from './features/tournament/tournaments/tournaments.component';
+import { TournamentInfoComponent } from './features/tournament/tournament-info/tournament-info.component';
+import { TennisClubInfoComponent } from './features/tennis-club/tennis-club-info/tennis-club-info.component';
+import { TennisClubTournamentsComponent } from './features/tennis-club/tennis-club-tournaments/tennis-club-tournaments.component';
+import { TennisClubReservationsComponent } from './features/tennis-club/tennis-club-reservations/tennis-club-reservations.component';
+import { ReservationFormComponent } from './features/reservation/reservation-form/reservation-form.component';
 
 @NgModule({
-	declarations: [AppComponent, RegisterFormComponent, LoginFormComponent, HomeComponent, TennisClubsComponent, TournamentsComponent],
+	declarations: [AppComponent, RegisterFormComponent, LoginFormComponent, HomeComponent, TennisClubsComponent, TournamentsComponent, TournamentInfoComponent, TennisClubInfoComponent, TennisClubTournamentsComponent, TennisClubReservationsComponent, ReservationFormComponent],
 	imports: [
 		BrowserModule,
 		AppRoutingModule,
@@ -28,10 +37,13 @@ import { TournamentsComponent } from './features/tournament/tournaments/tourname
 		FormsModule,
 		ReactiveFormsModule,
 		MatInputModule,
+		MatSelectModule,
+		MatNativeDateModule,
 		HttpClientModule,
+		MatDatepickerModule,
 		ToastrModule.forRoot(),
 	],
-	providers: [],
+	providers: [DatePipe],
 	bootstrap: [AppComponent],
 })
 export class AppModule {}
