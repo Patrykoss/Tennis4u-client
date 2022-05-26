@@ -1,0 +1,41 @@
+@import  './../../../../styles.scss';
+
+hr {
+    margin: 0;
+}
+.title-hr{
+    width: 80%;
+    margin-bottom: 30px;
+}
+
+table, th, td {
+    border: 1px solid $text-color;
+    border-collapse: collapse;
+    font-size: 20px;
+}
+table {
+    width: 80%;
+}
+
+
+th {
+    padding: 20px 30px 20px 30px;
+}
+td {
+    padding: 20px 30px 20px 10px;
+}
+
+table th,
+table tbody tr:nth-child(even) {
+    background-color: $mid-green;
+}
+
+table tbody tr:nth-child(odd) {
+    background-color: $table-dark-green
+}
+
+.btns-action{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}

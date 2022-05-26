@@ -1,0 +1,20 @@
+<div class="nav-container">
+    <div class ="container">
+        <div>
+            <img src="" class="img-logo">
+        </div>
+        <div class="nav-info">
+            <h1 style="font-weight:normal;">{{client?.name}}</h1>
+            <hr>
+            <div class="nav-btn-container">
+                <a routerLink="/users/{{client?.idClient}}"><button class="btn btn-nav bnt-pointer">O mnie</button></a>
+
+                    <a routerLink="/users/{{client?.idClient}}/reservations" *ngIf="authGuard.getUserId() == idClient">
+                        <button class="btn btn-nav bnt-pointer">Rezerwacje</button>
+                    </a>
+
+                <a routerLink="/users/{{client?.idClient}}/matches"><button class="btn btn-nav bnt-pointer">Mecze</button></a>
+            </div>
+        </div>
+    </div>
+</div>

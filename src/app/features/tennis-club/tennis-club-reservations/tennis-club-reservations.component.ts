@@ -57,7 +57,6 @@ export class TennisClubReservationsComponent implements OnInit {
   getCurrentDate(): string{
     const date = this.datePipe.transform(this.dateForm.controls['dateOfReservation'].value,'yyyy-MM-dd');
     return date!.toString();
-    //return date!.replace(/[/]/g, '-'); 
   }
 
   isAvailable(idTennisCourt: number, hourOfReservation: string): boolean{
@@ -68,5 +67,19 @@ export class TennisClubReservationsComponent implements OnInit {
       return false;
     return true;
   }
+
+  minDate(): Date{
+    return new Date();
+  }
+
+  isAvailableHour(hour: string): boolean{
+    const d1= this.datePipe.transform(new Date(),'yyyy-MM-dd');
+    const d2 = this.datePipe.transform(this.dateForm.controls['dateOfReservation'].value,'yyyy-MM-dd')
+    if(d1 != d2)
+      return true
+    const splt = hour.split(":");
+    return ( Number(splt[0]!) >= new Date().getHours()+1 )
+  }
+
 
 }

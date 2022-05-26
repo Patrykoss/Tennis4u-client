@@ -33,5 +33,9 @@ export class ReservationService {
       return this._http.post<boolean>(this._tennisClubsUrl, data, {observe: 'response'});
     }
 
+    cancelReservation(idReservation: number):Observable<any> {
+      return this._http.put<boolean>(`${this._tennisClubsUrl}/${idReservation}`, {observe: 'response'});
+    }
+
     
 }

@@ -1,3 +1,6 @@
+import { ProfileMatchesComponent } from './features/profile/profile-matches/profile-matches.component';
+import { ProfileReservationsComponent } from './features/profile/profile-reservations/profile-reservations.component';
+import { ProfileInfoComponent } from './features/profile/profile-info/profile-info.component';
 import { ClientsReservationResolver } from './features/reservation/reservation-form/clients-reservation.resolver';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -24,9 +27,12 @@ const routes: Routes = [
 	{ path: 'tennisClubs', component: TennisClubsComponent},
 	{ path: 'tournaments', component: TournamentsComponent},
 	{ path: 'tennisClubs/:idTennisClub', component: TennisClubInfoComponent},
-	{ path: 'tennisClubs/:idTennisClub/reservations', component: TennisClubReservationsComponent, resolve: {workingHours: WorkHourResolver, reservations: ReservationsScheduleResolver}, canActivate: [AuthorizationGuardService], data: { expectedRole: ['Client','Worker','Manager']} },
+	{ path: 'tennisClubs/:idTennisClub/reservations', component: TennisClubReservationsComponent, resolve: {workingHours: WorkHourResolver, reservations: ReservationsScheduleResolver}, canActivate: [AuthorizationGuardService], data: { expectedRole: ['Client','Worker','Manager']}},
 	{ path: 'tennisClubs/:idTennisClub/tournaments', component: TennisClubTournamentsComponent},
-	{ path: 'reservations/tennisClub/:idTennisClub/tennisCourt/:idTennisCourt/date/:date/time/:time', resolve: {reservationInfo: ReservationInfoResolver, clients: ClientsReservationResolver}, component: ReservationFormComponent, data: { expectedRole: ['Client','Worker','Manager']}}
+	{ path: 'reservations/tennisClub/:idTennisClub/tennisCourt/:idTennisCourt/date/:date/time/:time', resolve: {reservationInfo: ReservationInfoResolver, clients: ClientsReservationResolver}, canActivate: [AuthorizationGuardService], component: ReservationFormComponent, data: { expectedRole: ['Client','Worker','Manager']}},
+	{ path: 'users/:idUser', component: ProfileInfoComponent, canActivate: [AuthorizationGuardService], data: { expectedRole: ['Client','Worker','Manager']}},
+	{ path: 'users/:idUser/reservations', component: ProfileReservationsComponent, canActivate: [AuthorizationGuardService], data: { expectedRole: ['Client','Worker','Manager']} },
+	{ path: 'users/:idUser/matches', component: ProfileMatchesComponent, canActivate: [AuthorizationGuardService], data: { expectedRole: ['Client','Worker','Manager']}},
 ];
 
 @NgModule({

@@ -11,12 +11,6 @@
     flex-direction: column;
 }
 
-.info-container{
-    display: flex;
-    flex-direction: row;
-    gap: 450px;
-}
-
 .hr-info{
     width: 150%;
     margin-bottom: 20px;
@@ -40,12 +34,12 @@ span{
     width: 150px;
 }
 
-td {
-    margin-right: 100px;
-    padding-right: 240px;
-    border-spacing: 500px;
+td{
+    padding-right: 100px;
 }
-tr{
-    margin-bottom: 50px;
-    padding-right: 240px;
+table{
+    border-spacing: 10px;
+}
+span {
+    font-size: 25px;
 }

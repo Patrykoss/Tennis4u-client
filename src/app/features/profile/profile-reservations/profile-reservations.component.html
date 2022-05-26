@@ -1,0 +1,38 @@
+<app-profile-navigator></app-profile-navigator>
+<div class="page-container-all container-all">
+    <h1 style="font-weight: bold;">Rezerwacje</h1>
+    <hr class="title-hr" />
+    <table *ngIf="reservations != undefined && reservations.length > 0">
+        <thead>
+            <tr>
+                <th>Klub</th>
+                <th>Rezerwacje</th>
+                <th>Status</th>
+                <th>Numer kortu</th>
+                <th>Cena</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let reservation of reservations">
+                <td><a routerLink="/tennisClubs/{{reservation.idTennisClub}}">{{reservation.tennisClubName}}</a></td>
+                <td>{{reservation.reservationRange}}</td>
+                <td>{{reservation.status}}</td>
+                <td>{{reservation.courtNumber}}</td>
+                <td>{{reservation.price}}zł</td>
+                <td>
+                    <div class="btns-action" *ngIf="reservation.isAvailableToCancel">
+                        <button class="btn-img btn-cancel" (click)="cancelReservation(reservation)" >
+                            <img src="./../../../../assets/images/calendar-cancel.svg" class="img-action">
+                        </button>
+                    </div>
+                </td>  
+            </tr>
+        </tbody>
+    </table>
+    <div *ngIf="reservations != undefined && reservations.length == 0">
+        <h2>
+            Brak rezerwacji
+        </h2>
+    </div>
+</div> 

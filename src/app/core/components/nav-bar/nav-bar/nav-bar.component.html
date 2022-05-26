@@ -26,17 +26,15 @@
 			<img alt="" src="{{ authGuard.getUserAvatar() }}" />
 			<span>{{ authGuard.getUserName() }}</span>
 			<mat-menu #menu="matMenu">
-				<button mat-menu-item *ngIf="authGuard.isClient()">
-					<a routerLink="/user/{{ authGuard.getUserId() }}">Profil</a>
-				</button>
-				<button mat-menu-item *ngIf="authGuard.isClient()">
-					<a routerLink="/user/{{ authGuard.getUserId() }}/matches">Mecze</a>
-				</button>
-				<button mat-menu-item *ngIf="authGuard.isClient()">
-					<a routerLink="/user/{{ authGuard.getUserId() }}/reservations"
-						>Rezerwacje</a
-					>
-				</button>
+				<a routerLink="/users/{{ authGuard.getUserId() }}">
+					<button mat-menu-item *ngIf="authGuard.isClient()">Profil</button>
+				</a>
+				<a routerLink="/users/{{ authGuard.getUserId() }}/matches">
+					<button mat-menu-item *ngIf="authGuard.isClient()">Mecze</button>
+				</a>
+				<a routerLink="/users/{{ authGuard.getUserId() }}/reservations">
+					<button mat-menu-item *ngIf="authGuard.isClient()">Rezerwacje</button>
+				</a>
 				<button mat-menu-item (click)="logout()">Wyloguj</button>
 			</mat-menu>
 		</div>

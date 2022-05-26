@@ -1,0 +1,27 @@
+<app-profile-navigator></app-profile-navigator>
+<div class="page-container-with-nav" *ngIf="user !== undefined">
+    <h1>O mnie</h1>
+    <hr class="title-hr" />
+    <table>
+        <tr>
+            <td><span><strong>Imię i Nazwisko:</strong></span></td>
+            <td><span>{{user.name}}</span></td>
+        </tr>
+        <tr>
+            <td><span><strong>Numer telefonu:</strong></span></td>
+            <td><span>{{user.phoneNumber}}</span></td>
+        </tr>
+        <tr>
+            <td><span><strong>Email:</strong></span></td>
+            <td><span>{{user.email}}</span></td>
+        </tr>
+        <tr *ngIf="user.dateOfBirth">
+            <td><span><strong>Data urodzenia:</strong></span></td>
+            <td><span>{{datePipe.transform(user.dateOfBirth,'yyyy-MM-dd')}}</span></td>
+        </tr>
+        <tr>
+            <td><span><strong>Liczba wygranych meczów:</strong></span></td>
+            <td><span>{{user.numberOfWonMatches}}</span></td>
+        </tr>
+    </table>
+</div>
