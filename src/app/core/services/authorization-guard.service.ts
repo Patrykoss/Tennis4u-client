@@ -21,13 +21,13 @@ export class AuthorizationGuardService implements CanActivate {
         const role = localStorage.getItem('role');
         const token = localStorage.getItem('accessToken');
         if(!role || !token){
-            localStorage.removeItem('accessToken');
-            localStorage.removeItem('avatar');
-            localStorage.removeItem('idClub');
-            localStorage.removeItem('idUser');
-            localStorage.removeItem('refreshToken');
-            localStorage.removeItem('role');
-            localStorage.removeItem('userName');
+          localStorage.removeItem('accessToken');
+          localStorage.removeItem('avatar');
+          localStorage.removeItem('idClub');
+          localStorage.removeItem('idUser');
+          localStorage.removeItem('refreshToken');
+          localStorage.removeItem('role');
+          localStorage.removeItem('userName');
             this._toastr.error('', 'Nieupoważniony dostęp', {
                 timeOut: 3000,
                 positionClass: 'toast-bottom-right' });

@@ -47,9 +47,12 @@ export class HandleErrorService {
 		});
 		if (err.status === 401) {
 			localStorage.removeItem('accessToken');
+			localStorage.removeItem('avatar');
+			localStorage.removeItem('idClub');
+			localStorage.removeItem('idUser');
+			localStorage.removeItem('refreshToken');
 			localStorage.removeItem('role');
 			localStorage.removeItem('userName');
-			localStorage.removeItem('id');
 			this._router.navigate(['login']);
 		}
 		if (err.status === 403) {

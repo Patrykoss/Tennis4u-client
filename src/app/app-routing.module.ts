@@ -1,3 +1,6 @@
+import { MatchInfoResolver } from './features/match/match-info.resolver';
+import { MatchResultComponent } from './features/tournament/match-result/match-result.component';
+import { PlayersResolver } from './features/reservation/reservation-form/players.resolver';
 import { TournamentMatchesComponent } from './features/tournament/tournament-matches/tournament-matches.component';
 import { TournamentPlayersComponent } from './features/tournament/tournament-players/tournament-players.component';
 import { ProfileMatchesComponent } from './features/profile/profile-matches/profile-matches.component';
@@ -31,13 +34,14 @@ const routes: Routes = [
 	{ path: 'tennisClubs/:idTennisClub', component: TennisClubInfoComponent},
 	{ path: 'tennisClubs/:idTennisClub/reservations', component: TennisClubReservationsComponent, resolve: {workingHours: WorkHourResolver, reservations: ReservationsScheduleResolver}, canActivate: [AuthorizationGuardService], data: { expectedRole: ['Client','Worker','Manager']}},
 	{ path: 'tennisClubs/:idTennisClub/tournaments', component: TennisClubTournamentsComponent},
-	{ path: 'reservations/tennisClub/:idTennisClub/tennisCourt/:idTennisCourt/date/:date/time/:time', resolve: {reservationInfo: ReservationInfoResolver, clients: ClientsReservationResolver}, canActivate: [AuthorizationGuardService], component: ReservationFormComponent, data: { expectedRole: ['Client','Worker','Manager']}},
+	{ path: 'reservations/tennisClub/:idTennisClub/tennisCourt/:idTennisCourt/date/:date/time/:time', resolve: {reservationInfo: ReservationInfoResolver, clients: ClientsReservationResolver, players: PlayersResolver}, canActivate: [AuthorizationGuardService], component: ReservationFormComponent, data: { expectedRole: ['Client','Worker','Manager']}},
 	{ path: 'users/:idUser', component: ProfileInfoComponent, canActivate: [AuthorizationGuardService], data: { expectedRole: ['Client','Worker','Manager']}},
 	{ path: 'users/:idUser/reservations', component: ProfileReservationsComponent, canActivate: [AuthorizationGuardService], data: { expectedRole: ['Client','Worker','Manager']} },
 	{ path: 'users/:idUser/matches', component: ProfileMatchesComponent, canActivate: [AuthorizationGuardService], data: { expectedRole: ['Client','Worker','Manager']}},
 	{ path: 'tournaments/:idTournament', component: TournamentInfoComponent, canActivate: [AuthorizationGuardService], data: { expectedRole: ['Client','Worker','Manager']}},
 	{ path: 'tournaments/:idTournament/players', component: TournamentPlayersComponent, canActivate: [AuthorizationGuardService], data: { expectedRole: ['Client','Worker','Manager']} },
 	{ path: 'tournaments/:idTournament/matches', component: TournamentMatchesComponent, canActivate: [AuthorizationGuardService], data: { expectedRole: ['Client','Worker','Manager']}},
+	{ path: 'tournaments/:idTournament/match/:idMatch', component: MatchResultComponent, resolve: {matchInfo: MatchInfoResolver }, canActivate: [AuthorizationGuardService], data: { expectedRole: ['Worker','Manager']}}
 ];
 
 @NgModule({

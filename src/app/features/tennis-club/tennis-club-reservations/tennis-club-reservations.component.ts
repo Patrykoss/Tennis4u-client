@@ -16,18 +16,18 @@ export class TennisClubReservationsComponent implements OnInit {
   public dateForm: FormGroup;
   public clubHours: ClubHours | undefined;
   public reservations: Reservation[] = [];
-  
+  public idMatch: string | null;
   constructor(
     public datePipe: DatePipe,
     private readonly _route: ActivatedRoute,
     private readonly _router: Router,
     private _reservationService: ReservationService
   ) {
-
+    const date = this._route.snapshot.queryParamMap.get('date');
+    this.idMatch = this._route.snapshot.queryParamMap.get('match');
     this.dateForm = new FormGroup({
-			dateOfReservation: new FormControl(new Date(),[Validators.required])
+			dateOfReservation: new FormControl(date == null ? new Date():new Date(date!),[Validators.required])
 		});
-
    }
 
   ngOnInit(): void {

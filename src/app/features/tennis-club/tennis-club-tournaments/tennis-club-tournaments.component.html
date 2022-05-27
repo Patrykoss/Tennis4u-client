@@ -26,7 +26,7 @@
                     <a routerLink="/tournaments/{{tournament.idTournament}}/edit" class="btn-return btn-action">
                         <img src="./../../../../assets/images/edit.png" class="img-action">
                     </a>
-                    <a (click)="askBeforeDelete(tournament)" *ngIf="authGuard.isWorker() && authGuard.getClubId() == tournament.idTennisClub && isBeforeNow(tournament)" class="btn-cancel btn-action">
+                    <a (click)="askBeforeDelete(tournament)" *ngIf="authGuard.isWorker() && authGuard.getClubId() == tournament.idTennisClub && isBeforeNow(tournament) && !tournament.hasReservations" class="btn-cancel btn-action">
                         <img src="./../../../../assets/images/delete.png" class="img-action">
                     </a>
                 </td>  

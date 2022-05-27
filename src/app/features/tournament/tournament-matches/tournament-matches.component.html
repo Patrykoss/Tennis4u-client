@@ -10,15 +10,30 @@
                 <th>Zawodnik_2</th>
                 <th>Wynik</th>
                 <th>Termin</th>
+                <th *ngIf="matches[0].idTennisClub == authGuard.getClubId()"></th>
             </tr>
         </thead>
         <tbody>
             <tr *ngFor="let match of matches">
                 <td>{{match.stage}}</td>
-                <td><a routerLink="/users/{{match.idClientOne}}">{{match.nameOne}} <span *ngIf="match.idClientOne == match.idWinner">(W)</span></a></td>
-                <td><a routerLink="/users/{{match.idClientTwo}}">{{match.nameTwo}} <span *ngIf="match.idClientTwo== match.idWinner">(W)</span></a></td>
-                <td>{{match.result}}</td>
-                <td>{{match.dateOfMatch}}</td>
+                <td *ngIf="match.idClientOne; else noPlayerOne"><a routerLink="/users/{{match.idClientOne}}">{{match.nameOne}} <span *ngIf="match.idClientOne == match.idWinner && match.idWinner">(W)</span></a></td>
+                <ng-template #noPlayerOne><td><span>X</span></td></ng-template>
+                <td *ngIf="match.idClientTwo; else noPlayerTwo"><a routerLink="/users/{{match.idClientTwo}}">{{match.nameTwo}} <span *ngIf="match.idClientTwo== match.idWinner && match.idWinner">(W)</span></a></td>
+                <ng-template #noPlayerTwo><td><span>X</span></td></ng-template>
+                <td *ngIf="match.result else noResult">{{match.result}}</td>
+                <ng-template #noResult><td><span>X</span></td></ng-template>
+                <td *ngIf="match.dateOfMatch else noDate">{{match.dateOfMatch}}</td>
+                <ng-template #noDate><td><span>X</span></td></ng-template>
+                <td *ngIf="matches[0].idTennisClub == authGuard.getClubId()" >
+                    <div class="btns-action">
+                        <a *ngIf="!match.dateOfMatch" routerLink="/tennisClubs/{{match.idTennisClub}}/reservations" [queryParams]="{ date: datePipe.transform(match.dateOfStart,'yyyy/MM/dd'), match: match.idMatch }" class="btn-return btn-action">
+                            <img src="./../../../../assets/images/calendar-plus.svg" class="img-action">
+                        </a>
+                        <a *ngIf="!match.result && match.dateOfMatch" routerLink="/tournaments/{{idTournament}}/match/{{match.idMatch}}" class="btn-success btn-action">
+                            <img src="./../../../../assets/images/tennis-ball.svg" class="img-action">
+                        </a>
+                    </div>
+                </td>
             </tr>
         </tbody>
     </table>

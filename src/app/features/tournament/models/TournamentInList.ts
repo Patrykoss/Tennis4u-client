@@ -9,7 +9,8 @@ export class TournamentInList{
         public idWinner: number,
         public winnerName: string,
         public idTennisClub: number,
-        public tennisClubName: string
+        public tennisClubName: string,
+        public hasReservations: boolean
     ){}
 }
 
@@ -18,6 +19,6 @@ export class TournamentInList{
 })
 export class TournamentInListAdapter{
     adapt(data: any): TournamentInList {
-        return new TournamentInList(data.idTournament, data.tournamentName, data.rank, data.startDate, data.idWinner, data.winnerName, data.idTennisClub, data.tennisClubName)
+        return new TournamentInList(data.idTournament, data.tournamentName, data.rank, data.startDate, data.idWinner, data.winnerName, data.idTennisClub, data.tennisClubName, data.hasReservations)
     }
 }

@@ -26,7 +26,9 @@
                 <span>{{court.roof}} ({{court.surface}})</span>
             </div>
             <div *ngFor="let hour of clubHours?.workHours">
-                <a *ngIf="isAvailable(court.number, hour.hour) && isAvailableHour(hour.hour); else notAvailable" routerLink="/reservations/tennisClub/{{court.idTennisClub}}/tennisCourt/{{court.idTennisCourt}}/date/{{getCurrentDate()}}/time/{{hour.hour}}">
+                <a *ngIf="isAvailable(court.number, hour.hour) && isAvailableHour(hour.hour); else notAvailable" 
+                routerLink="/reservations/tennisClub/{{court.idTennisClub}}/tennisCourt/{{court.idTennisCourt}}/date/{{getCurrentDate()}}/time/{{hour.hour}}" 
+                [queryParams]="{ match: idMatch }">
                     <div class="single-box btn-success"></div>
                 </a>
                 <ng-template #notAvailable >

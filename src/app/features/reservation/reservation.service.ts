@@ -37,5 +37,7 @@ export class ReservationService {
       return this._http.put<boolean>(`${this._tennisClubsUrl}/${idReservation}`, {observe: 'response'});
     }
 
-    
+    addReservationWithMatchForTournament(data: any):Observable<any> {
+      return this._http.post<any>(`${this._tennisClubsUrl}/match`, data, {observe: 'response'});
+    }
 }

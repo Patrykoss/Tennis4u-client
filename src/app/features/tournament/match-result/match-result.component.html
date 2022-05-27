@@ -1,0 +1,54 @@
+<app-tournament-navigator></app-tournament-navigator>
+<div class="page-container" *ngIf="match !== undefined">
+    <h1>Mecz</h1>
+    <hr class="title-hr" />
+    <table>
+        <tr>
+            <td class="name-day"><span><strong>Zawodnik_1:</strong></span></td>
+            <td><span>{{match?.playerOneName}}</span></td>
+        </tr>
+        <tr>
+            <td class="name-day"><span><strong>Zawodnik_2:</strong></span></td>
+            <td><span>{{match?.playerTwoName}}</span></td>
+        </tr>
+        <tr>
+            <td class="name-day"><span><strong>Data meczu:</strong></span></td>
+            <td><span>{{match?.dateOfMatch}}</span></td>
+        </tr>
+        <tr>
+            <td class="name-day"><span><strong>Faza:</strong></span></td>
+            <td><span>{{match?.stageName}}</span></td>
+        </tr>
+        <td class="name-day"><span><strong>Wynik meczu:</strong></span></td>
+        <td>
+            <form class="resForm" [formGroup]="matchForm">
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Wynik</mat-label>
+                    <input type="text" formControlName="matchResult" matInput />
+                    <mat-error *ngIf="matchForm.get('matchResult')?.hasError('required')">
+                        Wynik jest wymagany
+                    </mat-error>
+                </mat-form-field>
+            </form>
+        </td>
+        <tr>  
+            <td class="name-day"><span><strong>Zwycięzca:</strong></span></td>
+            <td>
+                <form class="resForm" [formGroup]="matchForm">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Wybierz</mat-label>
+                        <mat-select disableRipple formControlName="players">
+                          <mat-option class="opt-text" value="{{player.idClient}}" *ngFor="let player of match?.players;">{{player.name}}</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                  </form>
+            </td>
+        </tr>
+    </table>
+
+    <div class="btn-con">
+        <button class="btn-form btn-cancel" (click)="goBack()">Anuluj</button>
+        <button (click)="send()" [disabled]="!matchForm.valid" [className]="!matchForm.valid ? 'valid-form btn-f btn-success' : 'btn-f btn-success btn-w'">Zapisz</button>  
+    </div>
+    <div>
+<div>

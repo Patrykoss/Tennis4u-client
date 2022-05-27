@@ -2,7 +2,8 @@ import { Injectable } from "@angular/core";
 
 export class ReservationInfo{
     constructor(
-        public idTennisCourt: string,
+        public idTennisClub: number,
+        public idTennisCourt: number,
         public number: number,
         public roof: string,
         public surface: string,
@@ -18,6 +19,6 @@ export class ReservationInfo{
 })
 export class ReservationInfoAdapter {
     adapt(data: any): ReservationInfo {
-        return new ReservationInfo(data.idTennisCourt, data.number, data. roof, data.surface, data.isLight, data.price, data.resDate, data.availableHours);
+        return new ReservationInfo(data.idTennisClub, data.idTennisCourt, data.number, data. roof, data.surface, data.isLight, data.price, data.resDate, data.availableHours);
     }
 }

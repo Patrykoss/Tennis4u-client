@@ -1,5 +1,5 @@
 <app-tennis-club-navigator></app-tennis-club-navigator>
-<div class="page-container-with-nav" style="padding-bottom: 200px;">
+<div class="page-container" style="padding-bottom: 100px;">
     <h1 style="font-weight: bold;">Rezerwacja</h1>
     <hr class="title-hr" />
     <table>
@@ -27,7 +27,7 @@
             <td class="name-day"><span><strong>Data rezerwacji:</strong></span></td>
             <td><span>{{getDate()}} {{finalDate}}</span></td>
         </ng-template>
-        <tr *ngIf="isForm; else price">  
+        <tr *ngIf="isForm">  
             <td class="name-day"><span><strong>Zakres rezerwacji:</strong></span></td>
             <td>
                 <form class="resForm" [formGroup]="resForm">
@@ -40,7 +40,7 @@
                   </form>
             </td>
         </tr>
-        <tr *ngIf="isForm && authGuard.isWorker()">  
+        <tr *ngIf="isForm && authGuard.isWorker() && authGuard.getClubId() == reservation?.idTennisClub && !idMatch">  
             <td class="name-day"><span><strong>Klient:</strong></span></td>
             <td>
                 <form class="resForm" [formGroup]="resForm">
@@ -54,28 +54,55 @@
                   </form>
             </td>
         </tr>
-        <tr *ngIf="!isForm && resForm!.controls['clientsForm']!.value! > 0 && authGuard.isWorker()">
+        <tr *ngIf="idMatch && authGuard.getClubId() == reservation?.idTennisClub && isForm">
+            <td><span><strong>Zawodnik_1:</strong></span></td>
+            <td>
+                <form class="resForm" [formGroup]="playersForm">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Wybierz</mat-label>
+                        <mat-select disableRipple formControlName="playersOne">
+                          <mat-option class="opt-text" [value]="player!.idClient" *ngFor="let player of players;">{{player?.name}}</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                  </form>
+            </td>
+        </tr>
+        <tr *ngIf="idMatch && authGuard.getClubId() == reservation?.idTennisClub && isForm">
+            <td><span><strong>Zawodnik_2:</strong></span></td>
+            <td>
+                <form class="resForm" [formGroup]="playersForm">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Wybierz</mat-label>
+                        <mat-select disableRipple formControlName="playersTwo">
+                          <mat-option class="opt-text" [value]="player!.idClient" *ngFor="let player of players;">{{player?.name}}</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                  </form>
+            </td>
+        </tr>
+        <tr *ngIf="idMatch">
+            <td class="name-day"><span><strong>Mecz:</strong></span></td>
+            <td *ngIf="isForm; else previewMatch"><span>{{matchName}}</span></td>
+            <ng-template #previewMatch><span>{{getPlayerMatch()}} {{matchName}}</span></ng-template> 
+        </tr>
+        <tr *ngIf="!isForm && resForm!.controls['clientsForm']!.value! > 0 && authGuard.isWorker() && !idMatch">
             <td class="name-day"><span><strong>Klient:</strong></span></td>
             <td><span>{{getName()}}</span></td>
         </tr>
-        <ng-template #price>
-            <tr>
-                <td class="name-day"><span><strong>Cena:</strong></span></td>
-                <td><span>{{calculatePrice()}}</span></td>
-            </tr>
-        </ng-template>
+        <tr *ngIf="!idMatch && !isForm">
+            <td class="name-day"><span><strong>Cena:</strong></span></td>
+            <td><span>{{calculatePrice()}}</span></td>
+        </tr>  
     </table>
     <div class="btn-con" *ngIf="isForm; else actions">
-        <a routerLink="/tennisClubs/1/reservations">
-            <button class="btn-form btn-return">Wstecz</button>
-        </a>
+        <button class="btn-form btn-return" (click)="goBack()">Wstecz</button>
         <button (click)="show()" [disabled]="!resForm.valid" 
-        [className]="!resForm.valid ? 'valid-form btn-f btn-success' : 'btn-f btn-success btn-w'">Dalej</button>  
+        [className]="formIsValid() ? 'valid-form btn-f btn-success' : 'btn-f btn-success btn-w'">Dalej</button>  
     </div>
-    <ng-template #actions>
+    <ng-template #actions> 
         <div class="btn-con">
             <button (click)="showForm()" class="btn-form btn-return">Wstecz</button> 
-        <a routerLink="/tennisClubs/1/reservations">
+        <a routerLink="/tennisClubs/{{reservation?.idTennisClub}}/reservations">
             <button class="btn-form btn-cancel">Zrezygnuj</button>
         </a>
         <button (click)="makeReservation()" class="btn-form btn-success">Zarezerwuj</button>  
