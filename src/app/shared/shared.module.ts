@@ -6,13 +6,15 @@ import { ProfileNavigatorComponent } from './components/profile-navigator/profil
 import { CommonModule } from '@angular/common';  
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from '../app-routing.module';
+import { TournamentNavigatorComponent } from './components/tournament-navigator/tournament-navigator.component';
 
 @NgModule({
   declarations: [
     TennisClubNavigatorComponent,
     ProfileNavigatorComponent,
+    TournamentNavigatorComponent,
   ],
-  exports: [TennisClubNavigatorComponent, ProfileNavigatorComponent],
+  exports: [TennisClubNavigatorComponent, ProfileNavigatorComponent, TournamentNavigatorComponent],
   imports: [CommonModule, CommonModule, HttpClientModule, RouterModule, CommonModule, AppRoutingModule, BrowserModule]
 })
 export class SharedModule {}

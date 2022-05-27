@@ -28,9 +28,11 @@ import { ReservationFormComponent } from './features/reservation/reservation-for
 import { ProfileInfoComponent } from './features/profile/profile-info/profile-info.component';
 import { ProfileReservationsComponent } from './features/profile/profile-reservations/profile-reservations.component';
 import { ProfileMatchesComponent } from './features/profile/profile-matches/profile-matches.component';
+import { TournamentPlayersComponent } from './features/tournament/tournament-players/tournament-players.component';
+import { TournamentMatchesComponent } from './features/tournament/tournament-matches/tournament-matches.component';
 
 @NgModule({
-	declarations: [AppComponent, RegisterFormComponent, LoginFormComponent, HomeComponent, TennisClubsComponent, TournamentsComponent, TournamentInfoComponent, TennisClubInfoComponent, TennisClubTournamentsComponent, TennisClubReservationsComponent, ReservationFormComponent, ProfileInfoComponent, ProfileReservationsComponent, ProfileMatchesComponent],
+	declarations: [AppComponent, RegisterFormComponent, LoginFormComponent, HomeComponent, TennisClubsComponent, TournamentsComponent, TournamentInfoComponent, TennisClubInfoComponent, TennisClubTournamentsComponent, TennisClubReservationsComponent, ReservationFormComponent, ProfileInfoComponent, ProfileReservationsComponent, ProfileMatchesComponent, TournamentPlayersComponent, TournamentMatchesComponent],
 	imports: [
 		BrowserModule,
 		AppRoutingModule,

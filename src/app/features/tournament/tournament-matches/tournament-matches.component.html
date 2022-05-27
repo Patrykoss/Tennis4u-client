@@ -1,0 +1,30 @@
+<app-tournament-navigator></app-tournament-navigator>
+<div class="page-container-with-nav-new">
+    <h1 style="font-weight: bold;">Mecze</h1>
+    <hr class="title-hr" />
+    <table *ngIf="matches != undefined && matches.length > 0">
+        <thead>
+            <tr>
+                <th>Faza</th>
+                <th>Zawodnik_1</th>
+                <th>Zawodnik_2</th>
+                <th>Wynik</th>
+                <th>Termin</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let match of matches">
+                <td>{{match.stage}}</td>
+                <td><a routerLink="/users/{{match.idClientOne}}">{{match.nameOne}} <span *ngIf="match.idClientOne == match.idWinner">(W)</span></a></td>
+                <td><a routerLink="/users/{{match.idClientTwo}}">{{match.nameTwo}} <span *ngIf="match.idClientTwo== match.idWinner">(W)</span></a></td>
+                <td>{{match.result}}</td>
+                <td>{{match.dateOfMatch}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <div *ngIf="matches != undefined && matches.length == 0">
+        <h2>
+            Brak rozegranych meczów
+        </h2>
+    </div>
+</div> 

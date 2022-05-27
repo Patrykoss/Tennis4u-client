@@ -1,0 +1,16 @@
+<div class="nav-container">
+    <div class ="container">
+        <div>
+            <img src="" class="img-logo">
+        </div>
+        <div class="nav-info">
+            <h1 style="font-weight:normal;">{{tournament?.tournamentName}}</h1>
+            <hr>
+            <div class="nav-btn-container">
+                <a routerLink="/tournaments/{{tournament?.idTournament}}"><button class="btn btn-nav bnt-pointer">Opis</button></a>
+                <a routerLink="/tournaments/{{tournament?.idTournament}}/players"><button class="btn btn-nav bnt-pointer">Uczestnicy</button></a>
+                <a routerLink="/tournaments/{{tournament?.idTournament}}/matches"><button class="btn btn-nav bnt-pointer">Mecze</button></a>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,1 +1,42 @@
-<p>tournament-info works!</p>
+<app-tournament-navigator></app-tournament-navigator>
+<div class="page-container-with-nav" *ngIf="tournament !== undefined">
+    <h1>Opis turnieju</h1>
+    <hr class="title-hr" />
+    <table>
+        <tr>
+            <td><span><strong>Nazwa:</strong></span></td>
+            <td><span>{{tournament.tournamentName}}</span></td>
+        </tr>
+        <tr>
+            <td><span><strong>Ranga:</strong></span></td>
+            <td><span>{{tournament.rank}}</span></td>
+        </tr>
+        <tr>
+            <td><span><strong>Data rozpoczęcia:</strong></span></td>
+            <td><span>{{datePipe.transform(tournament.startDate,'d.MM.yyyy HH:mm')}}</span></td>
+        </tr>
+        <tr>
+            <td><span><strong>Data zakończenia:</strong></span></td>
+            <td *ngIf="tournament.endDate; else noEndDate"><span>{{datePipe.transform(tournament.endDate,'d.MM.yyyy HH:mm')}}</span></td>
+            <ng-template #noEndDate><td><span>Nieznana</span></td></ng-template>
+        </tr>
+        <tr>
+            <td><span><strong>Data zakończenia zapisów:</strong></span></td>
+            <td><span>{{datePipe.transform(tournament.endDateOfRegistration,'d.MM.yyyy HH:mm')}}</span></td>
+        </tr>
+        <tr>
+            <td><span><strong>Liczba uczestników:</strong></span></td>
+            <td><span>{{tournament.numberOfPlayers}}</span></td>
+        </tr>
+    </table>
+    <div class="bts-container">
+        <a routerLink="/tournaments/{{tournament.idTournament}}/edit">
+            <button *ngIf="tournament.idTennisClub == authGuard.getClubId()" class="btn-form btn-return">
+                Edytuj
+            </button>
+        </a>
+        <button (click)="register()" *ngIf="tournament?.canPlay" class="btn-form btn-info">
+            Zgłoś się
+        </button>
+    </div>
+</div>

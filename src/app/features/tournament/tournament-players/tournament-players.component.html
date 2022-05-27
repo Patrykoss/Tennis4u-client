@@ -1,0 +1,24 @@
+<app-tournament-navigator></app-tournament-navigator>
+<div class="page-container">
+    <h1 style="font-weight: bold;">Uczestnicy</h1>
+    <hr class="title-hr" />
+    <table *ngIf="players != undefined && players.length > 0">
+        <thead>
+            <tr>
+                <th>Nr</th>
+                <th>Gracz</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let player of players; let i = index">
+                <td>{{i+1}}</td>
+                <td><a routerLink="/users/{{player.idPlayer}}">{{player.playerName}}</a></td>
+            </tr>
+        </tbody>
+    </table>
+    <div *ngIf="players != undefined && players.length == 0">
+        <h2>
+            Brak uczestników
+        </h2>
+    </div>
+</div> 

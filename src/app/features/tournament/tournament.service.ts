@@ -28,4 +28,23 @@ export class TournamentService {
   deleteTournament(idTournament: number): Observable<any> {
     return this._http.delete<string>(`${this.tournamentsUrl}/${idTournament}`, { observe: 'response'});
   }
+
+  getTournametDetails(idTournament : number): Observable<any> {
+    return this._http.get<any>(`${this.tournamentsUrl}/${idTournament}`);
+  }
+
+  getTournametDetailsNav(idTournament : number): Observable<any> {
+    return this._http.get<any>(`${this.tournamentsUrl}/${idTournament}/nav`);
+  }
+
+  getTournametMatches(idTournament : number): Observable<any> {
+    return this._http.get<any>(`${this.tournamentsUrl}/${idTournament}/matches`);
+  }
+  getTournametPlayers(idTournament : number): Observable<any> {
+    return this._http.get<any>(`${this.tournamentsUrl}/${idTournament}/players`);
+  }
+  registerForTournament(idTournament : number): Observable<any> {
+    return this._http.post<any>(`${this.tournamentsUrl}/${idTournament}/registration`,null,{observe: 'response'});
+  }
+
 }

@@ -1,0 +1,56 @@
+@import "./../../../../styles.scss";
+
+.nav-container {
+    background-color: $dark-green;
+    border-radius: 10px;
+    padding: 25px 45px 15px 75px;
+    margin-top: 20px;
+    min-width: 650px;
+    max-width: 1750px;
+    margin: 20px auto;
+    max-height: 200px;
+}
+
+.container{
+    display: flex;
+    flex-direction: row;
+    gap: 45px;
+}
+.nav-info{
+    display: flex;
+    flex-direction: column;
+}
+
+.img-logo {
+    width: 150px;
+    height: 150px;
+    border-radius: 5%;
+    background: $light-green;
+}
+
+hr {
+    width: 100%;
+    margin-bottom: 25px;
+}
+.nav-btn-container{
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+.btn-nav{
+    height: 60px;
+    width: 185px;
+    border-radius: 20px;
+    background-color: $mid-green;
+    border: 0px solid;
+    font-size: 20px;
+}
+
+.bnt-pointer{
+    cursor:pointer;
+}
+
+button{
+    color: $text-color;
+}

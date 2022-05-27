@@ -1,3 +1,5 @@
+import { TournamentMatchesComponent } from './features/tournament/tournament-matches/tournament-matches.component';
+import { TournamentPlayersComponent } from './features/tournament/tournament-players/tournament-players.component';
 import { ProfileMatchesComponent } from './features/profile/profile-matches/profile-matches.component';
 import { ProfileReservationsComponent } from './features/profile/profile-reservations/profile-reservations.component';
 import { ProfileInfoComponent } from './features/profile/profile-info/profile-info.component';
@@ -33,6 +35,9 @@ const routes: Routes = [
 	{ path: 'users/:idUser', component: ProfileInfoComponent, canActivate: [AuthorizationGuardService], data: { expectedRole: ['Client','Worker','Manager']}},
 	{ path: 'users/:idUser/reservations', component: ProfileReservationsComponent, canActivate: [AuthorizationGuardService], data: { expectedRole: ['Client','Worker','Manager']} },
 	{ path: 'users/:idUser/matches', component: ProfileMatchesComponent, canActivate: [AuthorizationGuardService], data: { expectedRole: ['Client','Worker','Manager']}},
+	{ path: 'tournaments/:idTournament', component: TournamentInfoComponent, canActivate: [AuthorizationGuardService], data: { expectedRole: ['Client','Worker','Manager']}},
+	{ path: 'tournaments/:idTournament/players', component: TournamentPlayersComponent, canActivate: [AuthorizationGuardService], data: { expectedRole: ['Client','Worker','Manager']} },
+	{ path: 'tournaments/:idTournament/matches', component: TournamentMatchesComponent, canActivate: [AuthorizationGuardService], data: { expectedRole: ['Client','Worker','Manager']}},
 ];
 
 @NgModule({
