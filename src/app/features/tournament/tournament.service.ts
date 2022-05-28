@@ -51,4 +51,13 @@ export class TournamentService {
     return this._http.get<any>(`${this.tournamentsUrl}/${idMatch}/matchPlayers`);
   }
 
+  createTournament(data: any): Observable<any>{
+    return this._http.post<any>(`${this.tournamentsUrl}`,data, {observe: 'response'});
+  }
+  updateTournament(data: any): Observable<any>{
+    return this._http.put<any>(`${this.tournamentsUrl}`,data, {observe: 'response'});
+  }
+
+
+
 }

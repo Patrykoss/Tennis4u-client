@@ -1,0 +1,61 @@
+<div class="container">
+	<h1>Rejestracja</h1>
+	<hr />
+    <form class="form" [formGroup]="tournamentForm" (ngSubmit)="onSubmit()">
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Nazwa:</mat-label>
+            <input type="text" formControlName="name" matInput />
+            <mat-error *ngIf="tournamentForm.get('name')?.hasError('required')">
+                Nazwa jest wymagana
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Data rozpoczęcia</mat-label>
+            <input matInput type="datetime-local" formControlName="startDate">
+            <mat-error *ngIf="tournamentForm.get('startDate')?.hasError('required')">
+                Data rozpoczęcia jest wymagana
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Data zakończenia</mat-label>
+            <input matInput type="datetime-local" formControlName="endDate">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Data zakończenia zgłoszeń</mat-label>
+            <input matInput type="datetime-local" formControlName="finalDateForRegistration">
+            <mat-error *ngIf="tournamentForm.get('finalDateForRegistration')?.hasError('required')">
+                Data zakończenia zgłoszeń jest wymagana
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Ranga</mat-label>
+            <input type="number" formControlName="rank" matInput />
+            <mat-error *ngIf="tournamentForm.get('rank')?.hasError('min') && !tournamentForm.get('rank')?.hasError('required')">
+                Przedział rang wynosi 1-4
+            </mat-error>
+            <mat-error *ngIf="tournamentForm.get('rank')?.hasError('max')">
+                Przedział rang wynosi 1-4
+            </mat-error>
+            <mat-error *ngIf="tournamentForm.get('rank')?.hasError('required')">
+                Ranga jest wymagana
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Liczba uczestników</mat-label>
+            <input type="number" formControlName="maxPlayers" matInput />
+            <mat-error *ngIf="tournamentForm.get('maxPlayers')?.hasError('min') && !tournamentForm.get('rank')?.hasError('required')">
+                Liczba uczestników musi wynosić conajmniej 8
+            </mat-error>
+            <mat-error *ngIf="tournamentForm.get('maxPlayers')?.hasError('required')">
+                Liczba uczestników jest wymagana
+            </mat-error>
+        </mat-form-field>
+        <button type="submit" class="btn-form btn-info">Zarejestruj</button>
+    </form>
+    
+<div>

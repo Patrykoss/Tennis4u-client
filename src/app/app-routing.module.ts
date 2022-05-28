@@ -1,5 +1,8 @@
+import { WorkerFormComponent } from './features/worker/worker-form/worker-form.component';
+import { TournamentFormComponent } from './features/tournament/tournament-form/tournament-form.component';
+import { WorkerPanelComponent } from './features/worker/worker-panel/worker-panel.component';
 import { MatchInfoResolver } from './features/match/match-info.resolver';
-import { MatchResultComponent } from './features/tournament/match-result/match-result.component';
+import { MatchResultComponent } from './features/match/match-result/match-result.component';
 import { PlayersResolver } from './features/reservation/reservation-form/players.resolver';
 import { TournamentMatchesComponent } from './features/tournament/tournament-matches/tournament-matches.component';
 import { TournamentPlayersComponent } from './features/tournament/tournament-players/tournament-players.component';
@@ -41,7 +44,10 @@ const routes: Routes = [
 	{ path: 'tournaments/:idTournament', component: TournamentInfoComponent, canActivate: [AuthorizationGuardService], data: { expectedRole: ['Client','Worker','Manager']}},
 	{ path: 'tournaments/:idTournament/players', component: TournamentPlayersComponent, canActivate: [AuthorizationGuardService], data: { expectedRole: ['Client','Worker','Manager']} },
 	{ path: 'tournaments/:idTournament/matches', component: TournamentMatchesComponent, canActivate: [AuthorizationGuardService], data: { expectedRole: ['Client','Worker','Manager']}},
-	{ path: 'tournaments/:idTournament/match/:idMatch', component: MatchResultComponent, resolve: {matchInfo: MatchInfoResolver }, canActivate: [AuthorizationGuardService], data: { expectedRole: ['Worker','Manager']}}
+	{ path: 'tournaments/:idTournament/match/:idMatch', component: MatchResultComponent, resolve: {matchInfo: MatchInfoResolver }, canActivate: [AuthorizationGuardService], data: { expectedRole: ['Worker','Manager']}},
+	{ path: 'workerPanel', component: WorkerPanelComponent, canActivate: [AuthorizationGuardService], data: { expectedRole: ['Worker','Manager']}},
+	{ path: 'tournaments/create/new', component: TournamentFormComponent, canActivate: [AuthorizationGuardService], data: { expectedRole: ['Worker','Manager']}},
+	{ path: 'workers/create', component: WorkerFormComponent, canActivate: [AuthorizationGuardService], data: { expectedRole: ['Manager']}}
 ];
 
 @NgModule({

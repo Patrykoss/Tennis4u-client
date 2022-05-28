@@ -30,10 +30,13 @@ import { ProfileReservationsComponent } from './features/profile/profile-reserva
 import { ProfileMatchesComponent } from './features/profile/profile-matches/profile-matches.component';
 import { TournamentPlayersComponent } from './features/tournament/tournament-players/tournament-players.component';
 import { TournamentMatchesComponent } from './features/tournament/tournament-matches/tournament-matches.component';
-import { MatchResultComponent } from './features/tournament/match-result/match-result.component';
+import { MatchResultComponent } from './features/match/match-result/match-result.component';
+import { TournamentFormComponent } from './features/tournament/tournament-form/tournament-form.component';
+import { WorkerPanelComponent } from './features/worker/worker-panel/worker-panel.component';
+import { WorkerFormComponent } from './features/worker/worker-form/worker-form.component';
 
 @NgModule({
-	declarations: [AppComponent, RegisterFormComponent, LoginFormComponent, HomeComponent, TennisClubsComponent, TournamentsComponent, TournamentInfoComponent, TennisClubInfoComponent, TennisClubTournamentsComponent, TennisClubReservationsComponent, ReservationFormComponent, ProfileInfoComponent, ProfileReservationsComponent, ProfileMatchesComponent, TournamentPlayersComponent, TournamentMatchesComponent, MatchResultComponent],
+	declarations: [AppComponent, RegisterFormComponent, LoginFormComponent, HomeComponent, TennisClubsComponent, TournamentsComponent, TournamentInfoComponent, TennisClubInfoComponent, TennisClubTournamentsComponent, TennisClubReservationsComponent, ReservationFormComponent, ProfileInfoComponent, ProfileReservationsComponent, ProfileMatchesComponent, TournamentPlayersComponent, TournamentMatchesComponent, MatchResultComponent, TournamentFormComponent, WorkerPanelComponent, WorkerFormComponent],
 	imports: [
 		BrowserModule,
 		AppRoutingModule,

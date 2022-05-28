@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
-import { MatchService } from '../../match/match.service';
+import { MatchService } from '../match.service';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({

@@ -51,4 +51,15 @@ export class AuthGuardService {
 		if (roles?.toLowerCase().includes('client')) return true;
 		return false;
 	}
+
+	isManager(): boolean {
+		if (!this.isLoggedIn()) return false;
+		const roles = localStorage.getItem('role');
+		if (roles === '' || roles === undefined) return false;
+		if (
+			roles?.toLowerCase().includes('manager')
+		)
+			return true;
+		return false;
+	}
 }

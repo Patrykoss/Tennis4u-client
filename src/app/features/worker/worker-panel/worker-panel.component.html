@@ -1,0 +1,15 @@
+<div class="page-container">
+    <h1>Panel pracownika</h1>
+    <hr class="title-hr" />
+    <div class="box-actions">
+        <a routerLink="/tournaments/create/new" class="btn-action">
+            Stwórz turniej
+        </a>
+        <a *ngIf="authGuard.isManager()" routerLink="/workers/create" class="btn-action">
+            Stwórz konto pracownika
+        </a>
+        <a routerLink="/tennisClubs/{{authGuard.getClubId()}}/reservations" class="btn-action">
+            Rezerwacje klubowe
+        </a>
+    </div>
+<div>
