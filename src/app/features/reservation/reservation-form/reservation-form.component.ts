@@ -110,6 +110,14 @@ export class ReservationFormComponent implements OnInit {
     return !this.resForm.valid
   }
 
+  cancelReservation(): void {
+    this._router.navigate([`/tennisClubs/${this.reservation?.idTennisClub}/reservations`]);
+    this._toastr.error('', 'Anulowano rezerwacje', {
+      timeOut: 3000,
+      positionClass: 'toast-bottom-right',
+    });
+  }
+
   makeReservation(): void {
     const splDate = this.getDate().split('.');
     if(this.idMatch){

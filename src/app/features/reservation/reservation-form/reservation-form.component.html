@@ -101,10 +101,8 @@
     </div>
     <ng-template #actions> 
         <div class="btn-con">
-            <button (click)="showForm()" class="btn-form btn-return">Wstecz</button> 
-        <a routerLink="/tennisClubs/{{reservation?.idTennisClub}}/reservations">
-            <button class="btn-form btn-cancel">Zrezygnuj</button>
-        </a>
+        <button (click)="showForm()" class="btn-form btn-return">Wstecz</button> 
+        <button (click)="cancelReservation()" class="btn-form btn-cancel">Zrezygnuj</button>
         <button (click)="makeReservation()" class="btn-form btn-success">Zarezerwuj</button>  
         </div>
     </ng-template>
