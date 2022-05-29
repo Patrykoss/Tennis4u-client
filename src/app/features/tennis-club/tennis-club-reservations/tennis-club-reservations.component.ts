@@ -69,6 +69,8 @@ export class TennisClubReservationsComponent implements OnInit {
   }
 
   minDate(): Date{
+    if(this.idMatch)
+      return this.dateForm.controls['dateOfReservation'].value;
     return new Date();
   }
 
